@@ -3,18 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:simple_counter_flutter/screens/counter_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_counter_flutter/screens/settings_screen.dart';
+import 'package:simple_counter_flutter/screens/settings_screen/settings_screen.dart';
 import 'package:simple_counter_flutter/theme/theme_notifier.dart';
-
-final ThemeData lightTheme = ThemeData(
-  brightness: Brightness.light,
-  primarySwatch: Colors.lightBlue,
-);
-
-final ThemeData darkTheme = ThemeData(
-  brightness: Brightness.dark,
-  primarySwatch: Colors.blueGrey,
-);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,11 +37,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
-
-class CounterItem {
-  String name;
-  int count;
-
-  CounterItem({required this.name, required this.count});
 }

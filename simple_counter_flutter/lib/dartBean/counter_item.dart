@@ -10,7 +10,7 @@ class CounterItem {
   //  计数器的图标
   Icon? icon;
   //  计数器的子项目
-  List<CounterItem>? children;
+  List<CounterItem>? children = <CounterItem>[];
   //  步进，默认为1
   double? step;
 
@@ -18,9 +18,7 @@ class CounterItem {
     required this.name,
     required this.count,
     String? desc = '',
-    Icon? icon,
-    List<CounterItem>? children,
-    double? step = 1,
-  }) : icon = icon ?? Icon(Icons.tag),
-       children = children ?? <CounterItem>[];
+    this.icon = const Icon(Icons.tag),
+    this.step = 1,
+  });
 }
