@@ -13,9 +13,13 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   final List<CounterItem> _counters = [
-    CounterItem(name: '项目1', count: 0),
-    CounterItem(name: '项目2', count: 0),
-    CounterItem(name: '项目3', count: 0),
+    CounterItem(name: '背单词天数📚', count: 0)
+      ..children = [
+        CounterItem(name: '四级单词个数', count: 0),
+        CounterItem(name: '四级短语个数', count: 0),
+      ],
+    CounterItem(name: '健身天数💪', count: 0),
+    CounterItem(name: '给女朋友买束花🌸', count: 0),
   ];
 
   void _counterOperate(
@@ -32,7 +36,21 @@ class _CounterScreenState extends State<CounterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Linの計數器'),
+        title: Row(
+          children: [
+            Text('林の簡易計數器 ', style: TextStyle(color: Colors.deepPurple)),
+            Text(
+              'SimpleCounter',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.deepPurple,
+                fontSize: 17,
+                textBaseline: TextBaseline.alphabetic,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ],
+        ),
         actions: <Widget>[
           ThemeSwitcher(),
           IconButton(onPressed: () {}, icon: Icon(Icons.cloud_upload)),
@@ -76,11 +94,24 @@ class _CounterScreenState extends State<CounterScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       _counters[index].icon ?? SizedBox.shrink(),
-                      Text(
-                        _counters[index].name,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+
+                      SizedBox(
+                        width: 200,
+                        child: TextField(
+                          controller: TextEditingController(
+                            text: counters[index].name.toString(),
+                          ),
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.left,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            isDense: true,
+                            hintText: "新项目",
+                            contentPadding: EdgeInsets.symmetric(vertical: 8),
+                          ),
+                          onChanged: (value) {
+                            counters[index].name = value;
+                          },
                         ),
                       ),
                     ],
